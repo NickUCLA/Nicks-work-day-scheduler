@@ -16,7 +16,7 @@ $(function () {
     } else {
       $(this).removeClass("past present").addClass("future");
     }
-    // compares timeblock to current hour and applys classes
+    // compares timeblock to current hour and applies classes
   });
 
   $(".time-block").each(function () {
@@ -30,5 +30,10 @@ $(function () {
 
   // displays the current day and date
   var currentDate = dayjs().format("dddd, MMM DD, YYYY");
-  $("#currentDay").text("Today is " + currentDate);
+  // adds css style to the day
+  var formattedDate = currentDate.replace(
+    dayjs().format("dddd"),
+    '<span class="day">' + dayjs().format("dddd") + "</span>"
+  );
+  $("#currentDay").html("Today is " + formattedDate);
 });
